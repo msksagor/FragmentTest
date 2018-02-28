@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         }
         else if(position ==1){
-
-            //shortCut
             fragment = new Khan();
             getFragmentManager().beginTransaction().replace(R.id.fragmentID,fragment).commit();
 
