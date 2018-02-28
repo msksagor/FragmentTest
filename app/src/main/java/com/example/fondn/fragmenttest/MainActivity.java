@@ -30,21 +30,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Fragment fragment;
+        Fragment fragment = null;
 
         if(position == 0){
             fragment = new Sabujfragment();
-            FragmentManager fragmentManager = getFragmentManager();
-            FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.fragmentID,fragment);
-            transaction.commit();
-
-
         }
         else if(position ==1){
             fragment = new Khan();
-            getFragmentManager().beginTransaction().replace(R.id.fragmentID,fragment).commit();
-
         }
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(R.id.fragmentID,fragment);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
